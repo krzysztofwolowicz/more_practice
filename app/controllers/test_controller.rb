@@ -2,6 +2,7 @@ class TestController < ApplicationController
   def index
     #odwołanie do pliku index.html.erb
     @testowa = "witam w kursie ruby on rails"
+    @imiona = ["Ala", "Ewa", "Ola"]
   end
 
   def test
