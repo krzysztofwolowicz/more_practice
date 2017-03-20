@@ -18,7 +18,7 @@
     <tr>
       <td><%= k.pozycja %></td>
       <td><%= k.nazwa %></td>
-      <td class="center"><%= k.widoczna ? 'Tak': 'Nie' %></td>
+      <td class="center"><%= status_widoku(k.widoczna)%></td>
       <td class="center"><%= k.stronas.size %></td>
       <td class="actions">
         <%= link_to("Pokaż", {:action=>'pokaz', :id=> k.id}, :class=>'btn btn-xs btn-default')%>
