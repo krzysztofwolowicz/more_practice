@@ -1,0 +1,2 @@
+class Artykul < ApplicationRecord
+end
