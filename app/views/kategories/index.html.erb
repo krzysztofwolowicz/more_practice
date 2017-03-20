@@ -1,30 +1,33 @@
-<%= link_to("Dodaj nową kategorię", {:action=>'nowa'})  %>
+<div class="hero-unit">
+<h1>Kategorie</h1>
+<%= link_to("Dodaj nową kategorię", {:action=>'nowa'}, :class=>'btn btn-mini btn-primary')  %>
 
-<p>Ilość kategorii:  <%= @kategorie.size %></p>
+  <p style="text-align: right;"> Ilość kategorii:  <%= @kategorie.size %></p>
 
-<table>
-  <tr>
-    <th>Pozycja</th>
-    <th>Nazwa kategorii</th>
-    <th>Widoczna</th>
-    <th>Strony</th>
-    <th>Akcja</th>
-  </tr>
+  <table class="table table-striped">
+    <tr class="info">
+      <th>Pozycja</th>
+      <th>Nazwa kategorii</th>
+      <th>Widoczna</th>
+      <th>Strony</th>
+      <th>Akcja</th>
+    </tr>
 
 <% @kategorie.each do |k| %>
 
-  <tr>
-    <th><%= k.pozycja %></th>
-    <th><%= k.nazwa %></th>
-    <th><%= k.widoczna ? 'Tak': 'Nie' %></th>
-    <th><%= k.stronas.size %></th>
-    <th>
-      <%= link_to("Pokaż", "#")%>
-      <%= link_to("Edycja", "#")%>
-      <%= link_to("Usun", "#")%>
-    </th>
-  </tr>
+    <tr>
+      <td><%= k.pozycja %></td>
+      <td><%= k.nazwa %></td>
+      <td class="center"><%= k.widoczna ? 'Tak': 'Nie' %></td>
+      <td class="center"><%= k.stronas.size %></td>
+      <td class="actions">
+        <%= link_to("Pokaż", {:action=>'pokaz', :id=> k.id}, :class=>'btn btn-xs btn-default')%>
+        <%= link_to("Edycja", {:action=>'edycja', :id=> k.id},:class=>'btn btn-xs btn-primary')%>
+        <%= link_to("Usun", {:action=>'usun', :id=> k.id}, :class=>'btn btn-xs btn-danger')%>
+      </td>
+    </tr>
 
 <% end %>
 
 </table>
+</div>

@@ -1,25 +1,16 @@
-<h1>Nowa Kategoria</h1>
-<%= link_to("powrót", {:action=>'index'}) %>
+<div class="hero-unit">
+  <h1>Nowa Kategoria</h1>
 
-<%= form_for(:kategoria, :url => {:action =>'utworz'}) do |pole| %>
+  <%= form_for(:kategoria, :url => {:action =>'utworz'}) do |pole| %>
 
-<table>
-  <tr>
-    <th><%= pole.label(:nazwa) %></th>
-    <td><%= pole.text_field(:nazwa) %></td>
-  </tr>
-  <tr>
-    <th><%= pole.label(:pozycja) %></th>
-    <td><%= pole.select(:pozycja, 1..@licznik) %></td>
-  </tr>
-  <tr>
-    <th><%= pole.label(:widoczna, "Czy jest wpidoczna?") %></th>
-    <td><%= pole.check_box(:widoczna) %></td>
-  </tr>
-</table>
-<div>
-  <%= submit_tag "Utwórz", class: "class" %>
+  <%= render(:partial => "form", :locals => {:pole => pole}) %>
+
+  <div style="text-align: center;">
+  <%= link_to("Powrót", {:action=>'index'}, :class=>'btn btn-warning') %>
+
+    <%= submit_tag "Utwórz", class: "btn btn-mini btn-primary" %>
+  </div>
+
+  <% end %>
+
 </div>
-
-<% end %>
-

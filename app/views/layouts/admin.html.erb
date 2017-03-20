@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MorePractice</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <!-- główna -->
+
+  <div class="container">
+    <% if !flash[:notice].blank? %>
+
+    <div class="alert alert-success" style="text-align: center;">
+      <%= flash[:notice] %>
+    </div>
+
+    <% end %>
+    <%= yield %>
+  </div>
+
+  <!-- stopka -->
+    <div id="footer">
+      <div class="container">
+        <p class="text muted">
+          Stópka dla mojego projektu 2017 &copy;
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
