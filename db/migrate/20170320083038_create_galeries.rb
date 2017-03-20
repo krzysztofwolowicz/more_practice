@@ -5,7 +5,7 @@ class CreateGaleries < ActiveRecord::Migration[5.0]
         t.integer "pozycja"
         t.text "opis"
         t.boolean "widoczna", :default=>false
-        t.attachment "zdjecie"
+
 
       t.timestamps
     end

@@ -6,7 +6,7 @@ class CreateArtykuls < ActiveRecord::Migration[5.0]
         t.integer "pozycja"
         t.boolean "widoczny", :default=>true
         t.text "zawartosc"
-        t.attachment :zdjecie
+
 
       t.timestamps
     end

@@ -6,7 +6,7 @@ class CreateZdjecies < ActiveRecord::Migration[5.0]
       t.integer "pozycja"
       t.boolean "widoczne", :defoult=>true
       t.string "opis"
-      t.attachment "zdjecie"
+
 
       t.timestamps
     end

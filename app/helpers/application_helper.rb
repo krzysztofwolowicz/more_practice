@@ -8,4 +8,9 @@ module ApplicationHelper
       content_tag(:span, options[:flase_text], :class=> 'glyphicon glyphicon-ban-circle')
     end
   end
+
+  def blad(objekt)
+    render(:partial=>'dodatki/bledy', :locals=>{:objekt=>objekt})
+
+  end
 end
