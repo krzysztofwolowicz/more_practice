@@ -1,0 +1,14 @@
+class CreateKategories < ActiveRecord::Migration[5.0]
+  def up
+    create_table :kategories do |t|
+        t.string "nazwa"
+        t.integer "pozycja"
+        t.boolean "widoczna", :default=>true
+      t.timestamps
+    end
+  end
+  def down
+    drop_table :kategories
+
+  end
+end
