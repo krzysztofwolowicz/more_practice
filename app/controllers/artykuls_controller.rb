@@ -2,9 +2,10 @@ class ArtykulsController < ApplicationController
   layout 'admin'
 
   before_action :sprawdz_logowanie
+  before_action :szukaj_strony
 
   def index
-    @artykuly = Artykul.sortuj
+    @artykuly = @strony.artykuls.sortuj
   end
 
   def nowy
@@ -62,10 +63,21 @@ class ArtykulsController < ApplicationController
     @artykuly = Artykul.find(params[:id])
   end
 
-  def artykuly_parametry
+  private
 
-    params.require(:artykuly).permit(:nazwa, :pozycja, :widoczny, :created_at, :strona_id, :zdjecie)
+    def artykuly_parametry
 
-  end
+      params.require(:artykuly).permit(:nazwa, :pozycja, :widoczny, :created_at, :strona_id, :zdjecie)
+    end
 
+
+    def szukaj_strony
+
+      if params[:strona_id]
+
+      @strony = Strona.find(params[:strona_id])
+      end
+    end
 end
+
+

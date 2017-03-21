@@ -1,5 +1,7 @@
 <div class="hero-unit">
+  <%= link_to("<< Powrót do strony", {:controller => 'stronas', :action => 'index', :kategoria_id => @strony.kategorie.id}, :class => 'btn btn-xs btn-default') %>
 <h1>Artykuły</h1>
+
 <%= link_to("Dodaj nowy artykuł", {:action=>'nowy'}, :class=>'btn btn-mini btn-primary')  %>
 
   <p style="text-align: right;"> Ilość stron:  <%= @artykuly.size %></p>
@@ -21,9 +23,9 @@
       <td><%= artykul.nazwa %></td>
       <td class="center"><%= status_widoku(artykul.widoczny)%></td>
       <td class="actions">
-        <%= link_to("Pokaż", {:action=>'pokaz', :id=> artykul.id}, :class=>'btn btn-xs btn-default')%>
-        <%= link_to("Edycja", {:action=>'edycja', :id=> artykul.id},:class=>'btn btn-xs btn-primary')%>
-        <%= link_to("Usun", {:action=>'usun', :id=> artykul.id}, :class=>'btn btn-xs btn-danger')%>
+        <%= link_to("Pokaż", {:action=>'pokaz', :id=> artykul.id, :strona_id => @strony.id}, :class=>'btn btn-xs btn-default')%>
+        <%= link_to("Edycja", {:action=>'edycja', :id=> artykul.id,:strona_id => @strony.id},:class=>'btn btn-xs btn-primary')%>
+        <%= link_to("Usun", {:action=>'usun', :id=> artykul.id, :strona_id => @strony.id}, :class=>'btn btn-xs btn-danger')%>
       </td>
     </tr>
 

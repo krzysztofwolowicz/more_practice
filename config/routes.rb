@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :kategories do
-    resources :stronas
-  end
-
   get 'admin', :to => "dostep#index"
   root 'test#index'
 
