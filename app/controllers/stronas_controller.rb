@@ -2,9 +2,11 @@ class StronasController < ApplicationController
   layout 'admin'
 
   before_action :sprawdz_logowanie
+  before_action :szukaj_kategorie
 
   def index
-    @stronas = Strona.sortuj
+
+    @stronas = @kategorie.stronas.sortuj
   end
 
   def pokaz
@@ -12,7 +14,7 @@ class StronasController < ApplicationController
   end
 
   def nowa
-    @strona = Strona.new({:nazwa => 'Nazwa'})
+    @strona = Strona.new({:kategorie_id => @kategorie.id, :nazwa => 'Nazwa'})
     @licznik = Strona.count + 1
     @kategoria = Kategorie.order('pozycja ASC')
   end
@@ -23,7 +25,7 @@ class StronasController < ApplicationController
 
     if @strona.save
       flash[:notice]="Strona została pomyślnie utworzona"
-      redirect_to(:action=>'index')
+      redirect_to(:action=>'index', :kategorie_id => @kategoria.id)
     else
       @licznik = Strona.count + 1
       @kategoria = Kategorie.order('pozycja ASC')
@@ -42,7 +44,7 @@ class StronasController < ApplicationController
     @strona = Strona.find_by(id: params[:id])
     if @strona.update_attributes(strona_parametry)
       flash[:notice]="Strona została pomyślnie zaktualizowana"
-      redirect_to(:action => 'pokaz', :id => @strona.id)
+      redirect_to(:action => 'pokaz', :id => @strona.id, :kategorie_id => @kategoria.id)
     else
       @licznik = Strona.count
       @kategoria = Kategorie.order('pozycja ASC')
@@ -59,14 +61,19 @@ class StronasController < ApplicationController
 
     strona = Strona.find(params[:id]).destroy
     flash[:notice]="Strona #{strona.nazwa} została pomyślnie usunięta"
-    redirect_to(:action=>'index')
+    redirect_to(:action=>'index', :kategorie_id => @kategoria.id)
 
   end
 
-    def strona_parametry
+  private
 
-    params.require(:strona).permit(:nazwa, :pozycja, :widoczna, :created_at, :kategorie_id)
+      params.require(:strona).permit(:nazwa, :pozycja, :widoczna, :created_at, :kategorie_id)
 
+    def szukaj_kategorie
+
+      if params[:kategoria_id]
+        @kategorie = Kategorie.find(params[:kategoria_id])
+
+      end
+    end
   end
-
-end
