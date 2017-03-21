@@ -1,2 +1,17 @@
-<h1>Zdjecies#edycja</h1>
-<p>Find me in app/views/zdjecies/edycja.html.erb</p>
+<div class="hero-unit">
+  <h1>Edycja zdjęcia: <%= @zdjecia.nazwa %></h1>
+
+
+  <%= form_for(:zdjecia, :url => {:action =>'aktualizuj', :id=> @zdjecia.id}) do |pole| %>
+
+  <%= render(:partial => "form", :locals => {:pole => pole}) %>
+  <div style="text-align: center;">
+    <%= link_to("Anuluj", {:action=>'index'}, :class=>'btn btn-warning') %>
+    <%= submit_tag "Aktualizuj", :class=>'btn btn-primary' %>
+  </div>
+
+  <% end %>
+
+</div>
+
+
