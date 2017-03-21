@@ -1,26 +1,13 @@
 Rails.application.routes.draw do
+  get 'uzytkowniks/index'
 
+  get 'uzytkowniks/nowy'
 
-  get 'zdjecies/index'
+  get 'uzytkowniks/edycja'
 
-  get 'zdjecies/nowa'
+  get 'uzytkowniks/usun'
 
-  get 'zdjecies/pokaz'
-
-  get 'zdjecies/edycja'
-
-  get 'zdjecies/usun'
-
-  get 'galeries/index'
-
-  get 'galeries/nowa'
-
-  get 'galeries/pokaz'
-
-  get 'galeries/edycja'
-
-  get 'galeries/usun'
-
+  get 'admin', :to => "dostep#index"
   root 'test#index'
 
   match ':controller(/:action(/:id))', :via => [:get, :post]

@@ -5,4 +5,6 @@ class Kategorie < ApplicationRecord
   scope :niewidoczna, lambda{where(:widoczna =>false)}
   scope :sortuj, lambda{order("kategories.pozycja ASC")}
   scope :najnowsza, lambda {order("kategories.created_at DESC")}
+
+
 end

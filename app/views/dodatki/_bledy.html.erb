@@ -1,16 +1,12 @@
-<% if objekt && objekt.errors.size >0 %>
-  <div class="bg-danger">
-    <table class="danger">
-      <tr>
-        <td> Wystąpiły błędy podczas zapisu rekordu do bazy danych, ilość błędow: <%= objekt.errors.size %>
-        <br>
-        dla następujących pól</td>
-      </tr>
-      <% objekt.error.full_massages.each do |komunikat| %>
-        <tr class="warning">
-          <td><b><%= komunikat %></b></td>
-        </tr>
-        <% end %>
-    </table>
+
+<% if @uzytkownik.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@uzytkownik.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+    <% objekt.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
   </div>
 <% end %>

@@ -2,6 +2,8 @@ class KategoriesController < ApplicationController
 
   layout 'admin'
 
+  before_action :sprawdz_logowanie
+
   def index
 
     @kategorie = Kategorie.sortuj
@@ -64,10 +66,12 @@ class KategoriesController < ApplicationController
 
   end
 
-  def kategorie_parametry
+  private
 
-    params.require(:kategoria).permit(:nazwa, :pozycja, :widoczna, :created_at)
+    def kategorie_parametry
 
-  end
+      params.require(:kategoria).permit(:nazwa, :pozycja, :widoczna, :created_at)
+
+    end
 
 end

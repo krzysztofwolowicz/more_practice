@@ -1,0 +1,42 @@
+<% if @uzytkownik.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@uzytkownik.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+    <% @uzytkownik.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<table class="table table-striped">
+
+  <tr>
+    <th><%= pole.label(:imie) %></th>
+    <td><%= pole.text_field(:imie, :class=>'form-control') %></td>
+  </tr>
+  <tr>
+    <th><%= pole.label(:nazwisko) %></th>
+    <td><%= pole.text_field(:nazwisko, :class=>'form-control') %></td>
+  </tr>
+  <tr>
+    <th><%= pole.label(:uzytkownik) %></th>
+    <td><%= pole.text_field(:uzytkownik, :class=>'form-control') %></td>
+  </tr>
+  <tr>
+    <th><%= pole.label(:email) %></th>
+    <td><%= pole.text_field(:email, :class=>'form-control') %></td>
+  </tr>
+  <tr>
+    <th><%= pole.label(:password, "hasło :") %></th>
+    <td><%= pole.password_field(:password, :class=>'form-control') %></td>
+  </tr>
+  <tr>
+    <th><%= pole.label(:password_confirmation, "Powtórz hasło") %></th>
+    <td><%= pole.password_field(:password_confirmation, :class=>'form-control') %></td>
+  </tr>
+
+</table>
+
+

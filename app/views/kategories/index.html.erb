@@ -21,6 +21,7 @@
       <td class="center"><%= status_widoku(k.widoczna)%></td>
       <td class="center"><%= k.stronas.size %></td>
       <td class="actions">
+        <%= link_to("Strony", {:controller => 'stronas', :kategorie_id => k.id}, :class => 'btn btn-xs btn-success') %>
         <%= link_to("Pokaż", {:action=>'pokaz', :id=> k.id}, :class=>'btn btn-xs btn-default')%>
         <%= link_to("Edycja", {:action=>'edycja', :id=> k.id},:class=>'btn btn-xs btn-primary')%>
         <%= link_to("Usun", {:action=>'usun', :id=> k.id}, :class=>'btn btn-xs btn-danger')%>

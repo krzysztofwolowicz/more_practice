@@ -5,6 +5,10 @@ class Artykul < ApplicationRecord
 
   validates_attachment_content_type :zdjecie, content_type: /\Aimage\/.*\z/
 
+  validates :nazwa, :presence => true
+
+
+
 
   scope :widoczny, lambda{where(:widoczny =>true)}
   scope :niewidoczny, lambda{where(:widoczny =>false)}

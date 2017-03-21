@@ -1,4 +1,15 @@
-<%= blad(@zdjecia) %>
+<% if @zdjecia.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@zdjecia.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+    <% @zdjecia.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <table class="table table-striped">
   <tr>
     <th><%= pole.label(:galerie_id, "Galeria") %></th>

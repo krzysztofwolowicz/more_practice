@@ -1,5 +1,6 @@
 class Strona < ApplicationRecord
   belongs_to :kategorie
+
   has_many :artykuls
 
   scope :widoczna, lambda{where(:widoczna =>true)}
