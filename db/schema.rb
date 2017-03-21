@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320145528) do
+ActiveRecord::Schema.define(version: 20170321090415) do
 
   create_table "artykuls", force: :cascade do |t|
     t.integer  "strona_id"
@@ -30,9 +30,13 @@ ActiveRecord::Schema.define(version: 20170320145528) do
     t.string   "nazwa"
     t.integer  "pozycja"
     t.text     "opis"
-    t.boolean  "widoczna",   default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "widoczna",             default: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.string   "zdjecie_file_name"
+    t.string   "zdjecie_content_type"
+    t.integer  "zdjecie_file_size"
+    t.datetime "zdjecie_updated_at"
   end
 
   create_table "kategories", force: :cascade do |t|
