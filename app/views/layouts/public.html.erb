@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<title>Programowanie <%= " | #{@tytul_strony}" if @tytul_strony %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+
+<!-- początek nawigacji -->
+  <%= render(:partial=> "menu") %>
+<!-- koniec nawigacji -->
+<!-- treść strony początek -->
+<div id="content">
+  <%= yield %>
+
+</div>
+<!-- treść strony koniec -->
+<!-- stopka początek -->
+
+ <div id="footer">
+   <br>Designed and developed with love by Appchance Team &copy; <a href="http://appchance.com/" target="_blank">www.appchance.com</a>
+ </div>
+<!-- stopka koniec -->
+
+</body>
+</html>

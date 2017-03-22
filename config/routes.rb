@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'admin', :to => "dostep#index"
-  root 'test#index'
+  root 'public#index'
 
   match ':controller(/:action(/:id))', :via => [:get, :post]
 
