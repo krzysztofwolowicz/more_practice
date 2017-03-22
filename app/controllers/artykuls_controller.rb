@@ -9,8 +9,10 @@ class ArtykulsController < ApplicationController
   end
 
   def nowy
-    @artykuly = Artykul.new({:nazwa=>"Tytuł?"})
-    @strona = Strona.order('pozycja ASC')
+    @artykuly = Artykul.new({:strona_id => @strony.id, :nazwa=>"Tytuł?"})
+    # @strona = Strona.order('pozycja ASC')
+    # poniżej Tabela @strony kontroler kategorie
+    @strona = @strony.kategorie.stronas.sortuj
     @licznik = Artykul.count + 1
   end
 
@@ -20,7 +22,7 @@ class ArtykulsController < ApplicationController
 
     if @artykuly.save
       flash[:notice]="Artykuł został pomyślnie utworzony"
-      redirect_to(:action=>'index')
+      redirect_to(:action=>'index', :strona_id => @strony.id)
     else
       @licznik = Artykul.count + 1
       @artykuly = Strona.order('pozycja ASC')
@@ -39,7 +41,7 @@ class ArtykulsController < ApplicationController
     @artykuly = Artykul.find_by(id: params[:id])
     if @artykuly.update_attributes(artykuly_parametry)
       flash[:notice]="Artykuł został pomyślnie zaktualizowana"
-      redirect_to(:action => 'pokaz', :id => @artykuly.id)
+      redirect_to(:action => 'pokaz', :id => @artykuly.id, :strona_id => @strony.id)
     else
       @licznik = Artykul.count
       @strona = Strona.order('pozycja ASC')
@@ -55,7 +57,7 @@ class ArtykulsController < ApplicationController
 
     artykuly = Artykul.find(params[:id]).destroy
     flash[:notice]="Artykuł #{artykuly.nazwa} została pomyślnie usunięta"
-    redirect_to(:action=>'index')
+    redirect_to(:action=>'index', :strona_id => @strony.id)
 
   end
 
@@ -67,7 +69,7 @@ class ArtykulsController < ApplicationController
 
     def artykuly_parametry
 
-      params.require(:artykuly).permit(:nazwa, :pozycja, :widoczny, :created_at, :strona_id, :zdjecie)
+      params.require(:artykuly).permit(:nazwa, :pozycja, :widoczny, :created_at, :strona_id, :zdjecie, :zawartosc)
     end
 
 

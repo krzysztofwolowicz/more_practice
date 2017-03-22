@@ -14,17 +14,14 @@ class GaleriesController < ApplicationController
   end
 
   def utworz
-
     @galeria = Galerie.new(galeria_parametry)
-
     if @galeria.save
-      flash[:notice]="Galeria została pomyślnie utworzona"
-      redirect_to(:action=>'index')
+      flash[:notice] = "Galeria została pomyślnie utworzona"
+      redirect_to(:action => "index")
     else
       @licznik = Galerie.count + 1
-      render('nowa')
+      render("nowa")
     end
-
   end
 
   def pokaz
@@ -39,13 +36,12 @@ class GaleriesController < ApplicationController
   def aktualizuj
     @galeria = Galerie.find(params[:id])
     if @galeria.update_attributes(galeria_parametry)
-      flash[:notice]="Galeria została pomyślnie edytowana"
-      redirect_to(:action=>'pokaz', :id => @galeria.id)
+      flash[:notice] = "Galeria została pomyślnie zmodyfikowana"
+      redirect_to(:action => "pokaz", :id => @galeria.id)
     else
       @licznik = Galerie.count
-      render('edycja')
+      render("edycja")
     end
-
   end
 
   def usun
@@ -54,14 +50,13 @@ class GaleriesController < ApplicationController
 
   def kasuj
     galeria = Galerie.find(params[:id]).destroy
-    flash[:notice]="Galeria #{galeria.nazwa} została pomyślnie usunięta"
-    redirect_to(:action=>'index')
-
+    flash[:notice] = "Galeria #{galeria.nazwa} została pomyślnie usunięta"
+    redirect_to(:action => "index")
   end
+
 
   def galeria_parametry
-
     params.require(:galeria).permit(:nazwa, :pozycja, :widoczna, :opis, :zdjecie)
-
   end
+
 end

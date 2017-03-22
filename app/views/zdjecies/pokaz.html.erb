@@ -1,52 +1,47 @@
-
 <div class="hero-unit">
-  <h1>Pokaz Zdjęcie</h1>
+<h1>Pokaż Zdjęcie </h1>
+ <table class="table table-striped">
+  <tr>
+    <th>Nazwa Galerii</th>
+    <td><%= @zdjecia.galerie.nazwa %></td>
+  </tr>
 
-
-  <table class="table table-striped">
-     <tr>
-      <th>Nazwa Galerii</th>
-      <td><%= @zdjecia.galerie.nazwa %></td>
-    </tr>
-    <tr>
-      <th>Nazwa zdjęcia</th>
-      <td><%= @zdjecia.nazwa %></td>
-    </tr>
-    <tr>
-      <th>Pozycja</th>
-      <td><%= @zdjecia.pozycja %></td>
-    </tr>
-    <tr>
-      <th>Czy widoczna?</th>
-      <td><%= @zdjecia.widoczne ? 'Tak' : 'Nie' %></td>
-    </tr>
-    <tr>
-      <th>Opis:</th>
-      <td><%=@zdjecia.opis%></td>
-    </tr>
-    <tr>
-      <th>Dodane</th>
-      <td><%= @zdjecia.created_at %></td>
-    </tr>
-    <tr>
-      <th>Aktualizacja</th>
-      <td><%= @zdjecia.updated_at %></td>
-    </tr>
-    <tr>
-      <th>Zdjęcie:</th>
-      <td><%=image_tag(@zdjecia.zdjecie)%></td>
-    </tr>
-    <tr>
-      <th>Miniaturka</th>
-      <td><%=image_tag(@zdjecia.zdjecie.url(:thumb))%></td>
-    </tr>
-  </table>
-   <div style="text-align: center;">
-   <%= link_to("Powrót", {:action=>'index'}, :class=>'btn btn-primary') %>
-
-
-  </div>
-
+  <tr>
+    <th>Nazwa Zdjęcia</th>
+    <td><%= @zdjecia.nazwa %></td>
+  </tr>
+  <tr>
+    <th>Pozycja</th>
+    <td><%= @zdjecia.pozycja %></td>
+  </tr>
+  <tr>
+    <th>Czy widoczne?</th>
+    <td><%= @zdjecia.widoczne ? 'Tak' : 'Nie' %></td>
+  </tr>
+  <tr>
+    <th>Opis:</th>
+    <td><%= @zdjecia.opis %></td>
+  </tr>
+  <tr>
+    <th>Dodane:</th>
+    <td><%= @zdjecia.created_at %></td>
+  </tr>
+  <tr>
+    <th>Aktualizacja:</th>
+    <td><%= @zdjecia.updated_at %></td>
+  </tr>
+  <tr>
+    <th>Zdjęcie:</th>
+    <td><%= image_tag(@zdjecia.zdjecie) %></td>
+  </tr>
+  <tr>
+    <th>Miniaturka:</th>
+    <td><%= image_tag(@zdjecia.zdjecie.url(:thumb)) %></td>
+  </tr>
+</table>
+<div style="text-align: center;">
+  <%= link_to("Powrót", {:action => 'index', :galerie_id => @galerie.id}, :class => 'btn btn-primary')%>
+</div>
 </div>
 
 

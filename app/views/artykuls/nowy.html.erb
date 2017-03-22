@@ -1,17 +1,10 @@
 <div class="hero-unit">
-  <h1>Nowy artykuł</h1>
-
-  <%= form_for(:artykuly, :url => {:action =>'utworz'}) do |pole| %>
-
+<h1>Nowy Artykuł</h1>
+  <%= form_for(:artykuly, :url => {:action => 'utworz', :strona_id => @strony.id}) do |pole| %>
   <%= render(:partial => "form", :locals => {:pole => pole}) %>
-
-  <div style="text-align: center;">
-  <%= link_to("Powrót", {:action=>'index'}, :class=>'btn btn-warning') %>
-
-    <%= submit_tag "Utwórz", class: "btn btn-mini btn-primary" %>
-  </div>
-
-  <% end %>
-
+<div style="text-align: center;">
+  <%= link_to("Powrót", {:action => 'index', :strona_id => @strony.id}, :class => 'btn btn-warning')%>
+  <%= submit_tag("Utwórz", :class => 'btn  btn-primary') %>
 </div>
-
+<% end %>
+</div>

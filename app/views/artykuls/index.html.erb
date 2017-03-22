@@ -2,7 +2,7 @@
   <%= link_to("<< Powrót do strony", {:controller => 'stronas', :action => 'index', :kategoria_id => @strony.kategorie.id}, :class => 'btn btn-xs btn-default') %>
 <h1>Artykuły</h1>
 
-<%= link_to("Dodaj nowy artykuł", {:action=>'nowy'}, :class=>'btn btn-mini btn-primary')  %>
+<%= link_to("Dodaj nowy artykuł", {:action=>'nowy', :strona_id => @strony.id}, :class=>'btn btn-mini btn-primary')  %>
 
   <p style="text-align: right;"> Ilość stron:  <%= @artykuly.size %></p>
 
